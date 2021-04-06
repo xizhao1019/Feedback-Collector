@@ -1,5 +1,16 @@
 const express = require('express');
+require('./services/passport');
+
+
 const app = express();
+
+require('./routes/authRoutes')(app);
+
+mongoose.connect(keys.mongoURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  });
 
 app.get('/', (req,res)=>{
   res.send({hello: 'kevin'})
